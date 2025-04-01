@@ -1,0 +1,22 @@
+Algoritmo ElevarAlCuadrado
+    // Declaramos las variables
+    Definir n, i Como Entero
+    Definir numeros Como Arreglo[1..n] De Real
+
+    // Pedimos al usuario la cantidad de números
+    Escribir "Ingrese la cantidad de números: "
+    Leer n
+
+    // Ingresamos los números en el arreglo
+    Para i <- 1 Hasta n Con Paso 1 Hacer
+        Escribir "Ingrese el número ", i, ": "
+        Leer numeros[i]
+    FinPara
+
+    // Mostrar los números elevados al cuadrado
+    Escribir "Los números elevados al cuadrado son: "
+    Para i <- 1 Hasta n Con Paso 1 Hacer
+        Escribir "El número ", numeros[i], " elevado al cuadrado es: ", numeros[i] * numeros[i]
+    FinPara
+
+FinAlgoritmo
