@@ -1,0 +1,242 @@
+Algoritmo Ejercicio1
+    // Definir el vector con 10 elementos enteros
+    Definir vector_numeros[10] Como Entero
+    Definir i Como Entero
+
+    // Inicializar el vector con valores aleatorios entre 1 y 10
+    Para i = 0 Hasta 9 Hacer
+        vector_numeros[i] = Aleatorio(1, 10)
+    FinPara
+
+    // Mostrar el valor de cada elemento, su cuadrado y su cubo
+    Para i = 0 Hasta 9 Hacer
+        Escribir "Elemento: ", vector_numeros[i]
+        Escribir "Cuadrado: ", vector_numeros[i]^2
+        Escribir "Cubo: ", vector_numeros[i]^3
+    FinPara
+
+FinAlgoritmo
+
+
+
+
+
+Algoritmo Ejercicio2
+    // Definir un vector de 5 elementos de tipo cadena
+    Definir vector_cadenas[5] Como Cadena
+    Definir vector_invertido[5] Como Cadena
+    Definir i Como Entero
+
+    // Leer los datos para inicializar el vector_cadenas
+    Para i = 0 Hasta 4 Hacer
+        Escribir "Ingrese una cadena para el elemento ", i + 1
+        Leer vector_cadenas[i]
+    FinPara
+
+    // Copiar los elementos en orden inverso al vector_invertido
+    Para i = 0 Hasta 4 Hacer
+        vector_invertido[i] = vector_cadenas[4 - i]
+    FinPara
+
+    // Mostrar el contenido del vector invertido
+    Escribir "El vector invertido es:"
+    Para i = 0 Hasta 4 Hacer
+        Escribir vector_invertido[i]
+    FinPara
+
+FinAlgoritmo
+
+
+
+
+Algoritmo Ejercicio3
+    // Definir un vector para almacenar las notas
+    Definir notas[5] Como Real
+    Definir suma Como Real
+    Definir nota_media, nota_mas_alta, nota_menor Como Real
+    Definir i Como Entero
+
+    // Inicializar suma en 0
+    suma = 0
+
+    // Leer las 5 notas por teclado
+    Para i = 0 Hasta 4 Hacer
+        Escribir "Ingrese la nota ", i + 1, " (entre 0 y 10):"
+        Leer notas[i]
+
+        // Asegurarse de que la nota esté entre 0 y 10
+        Mientras notas[i] < 0 O notas[i] > 10 Hacer
+            Escribir "Nota no válida. Ingrese una nota entre 0 y 10:"
+            Leer notas[i]
+        FinMientras
+
+        // Acumular la suma de las notas
+        suma = suma + notas[i]
+    FinPara
+
+    // Calcular la nota media
+    nota_media = suma / 5
+
+    // Inicializar las variables para la nota más alta y la más baja
+    nota_mas_alta = notas[0]
+    nota_menor = notas[0]
+
+    // Buscar la nota más alta y la más baja
+    Para i = 1 Hasta 4 Hacer
+        Si notas[i] > nota_mas_alta Entonces
+            nota_mas_alta = notas[i]
+        FinSi
+        Si notas[i] < nota_menor Entonces
+            nota_menor = notas[i]
+        FinSi
+    FinPara
+
+    // Mostrar los resultados
+    Escribir "Las notas ingresadas son:"
+    Para i = 0 Hasta 4 Hacer
+        Escribir "Nota ", i + 1, ": ", notas[i]
+    FinPara
+    Escribir "La nota media es: ", nota_media
+    Escribir "La nota más alta es: ", nota_mas_alta
+    Escribir "La nota más baja es: ", nota_menor
+
+FinAlgoritmo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Algoritmo DescuentoLlantas
+    // Definir las variables
+    Definir nombre_cliente Como Cadena
+    Definir cantidad_llantas Como Entero
+    Definir precio_unitario, precio_total, descuento Como Real
+
+    // Leer el nombre del cliente
+    Escribir "Ingrese el nombre del cliente:"
+    Leer nombre_cliente
+
+    // Leer la cantidad de llantas compradas
+    Escribir "Ingrese la cantidad de llantas compradas:"
+    Leer cantidad_llantas
+
+    // Determinar el precio por unidad y el descuento según la cantidad de llantas
+    Si cantidad_llantas < 12 Entonces
+        precio_unitario = 250
+        descuento = 0.20
+    Sino
+        precio_unitario = 220
+        descuento = 0.25
+    FinSi
+
+    // Calcular el precio total antes del descuento
+    precio_total = precio_unitario * cantidad_llantas
+
+    // Calcular el descuento y el precio final
+    precio_final = precio_total * (1 - descuento)
+
+    // Mostrar el resultado
+    Escribir "Cliente: ", nombre_cliente
+    Escribir "Cantidad de llantas compradas: ", cantidad_llantas
+    Escribir "Precio unitario de la llanta: ", precio_unitario
+    Escribir "Precio total antes del descuento: ", precio_total
+    Escribir "Descuento aplicado: ", descuento * 100, "%"
+    Escribir "Precio final después del descuento: ", precio_final
+
+FinAlgoritmo
+
+
+
+
+Algoritmo DescuentoMoto
+    // Definir las variables
+    Definir precio_moto, precio_final, descuento Como Real
+    Definir dia_compra Como Cadena
+
+    // Leer el precio de la moto
+    Escribir "Ingrese el precio de la moto:"
+    Leer precio_moto
+
+    // Leer el día en que el cliente planea comprar la moto
+    Escribir "Ingrese el día en que va a comprar la moto (lunes, martes, sábado, feriado):"
+    Leer dia_compra
+
+    // Determinar el descuento basado en el día de compra
+    Si dia_compra = "martes" Entonces
+        descuento = 0.12
+    Sino
+        Si dia_compra = "sábado" Entonces
+            descuento = 0.18
+        Sino
+            Si dia_compra = "feriado" Entonces
+                descuento = 0.25
+            Sino
+                descuento = 0
+            FinSi
+        FinSi
+    FinSi
+
+    // Calcular el precio final después del descuento
+    precio_final = precio_moto * (1 - descuento)
+
+    // Mostrar el precio final a pagar según el descuento
+    Escribir "El precio de la moto es: ", precio_moto
+    Escribir "El descuento aplicado es: ", descuento * 100, "%"
+    Escribir "El precio final a pagar es: ", precio_final
+
+FinAlgoritmo
+
+
+
+
+
+
+
+
+
+Algoritmo DescuentoMotoPromocion
+    // Definir las variables
+    Definir precio_moto, precio_final, descuento Como Real
+    Definir marca_moto Como Cadena
+
+    // Leer el precio de la moto
+    Escribir "Ingrese el precio de la moto:"
+    Leer precio_moto
+
+    // Leer la marca de la moto
+    Escribir "Ingrese la marca de la moto (Honda, Yamaha, Suzuki, u otra):"
+    Leer marca_moto
+
+    // Determinar el descuento según la marca de la moto
+    Si marca_moto = "Honda" Entonces
+        descuento = 0.05
+    Sino
+        Si marca_moto = "Yamaha" Entonces
+            descuento = 0.08
+        Sino
+            Si marca_moto = "Suzuki" Entonces
+                descuento = 0.10
+            Sino
+                descuento = 0.02
+            FinSi
+        FinSi
+    FinSi
+
+    // Calcular el precio final después del descuento
+    precio_final = precio_moto * (1 - descuento)
+
+    // Mostrar los resultados
+    Escribir "El precio de la moto es: ", precio_moto
+    Escribir "El descuento aplicado es: ", descuento * 100, "%"
+    Escribir "El precio final a pagar es: ", precio_final
+
+FinAlgoritmo
