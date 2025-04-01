@@ -1,0 +1,167 @@
+Algoritmo CostoPlato
+    // Declaramos las variables
+    Definir n, i Como Entero
+    Definir precio Como Real
+    Definir total Como Real
+
+    // Inicializamos el costo total en 0
+    total <- 0
+
+    // Pedir la cantidad de productos
+    Escribir "Ingrese la cantidad de productos: "
+    Leer n
+
+    // Crear arreglo para almacenar los precios de los productos
+    Definir precios Como Arreglo[1..n] De Real
+
+    // Ingresar los precios de los productos
+    Para i <- 1 Hasta n Con Paso 1 Hacer
+        Escribir "Ingrese el precio del producto ", i, ": "
+        Leer precios[i]
+        total <- total + precios[i]  // Acumulamos el costo total
+    FinPara
+
+    // Mostrar el costo total
+    Escribir "El costo total a gastar es: ", total
+
+FinAlgoritmo
+
+Algoritmo MostrarBarco
+    // Definimos el arreglo que representa la figura del barco
+    Definir barco Como Arreglo[1..5, 1..5] De Caracter
+
+    // Llenamos el arreglo con los caracteres para formar el barco
+    barco[1,1] <- " "   // Espacio vacío
+    barco[1,2] <- " "   
+    barco[1,3] <- "O"   // Parte superior del barco (mástil)
+    barco[1,4] <- " "   
+    barco[1,5] <- " "   
+
+    barco[2,1] <- "/"
+    barco[2,2] <- "|"
+    barco[2,3] <- "|"
+    barco[2,4] <- "|"
+    barco[2,5] <- "\\"
+
+    barco[3,1] <- "|"
+    barco[3,2] <- "|"
+    barco[3,3] <- "|"
+    barco[3,4] <- "|"
+    barco[3,5] <- "|"
+
+    barco[4,1] <- "|"
+    barco[4,2] <- "|"
+    barco[4,3] <- "|"
+    barco[4,4] <- "|"
+    barco[4,5] <- "|"
+
+    barco[5,1] <- "~~~~~"  // Parte inferior del barco (el casco)
+    barco[5,2] <- "~~~~~"
+    barco[5,3] <- "~~~~~"
+    barco[5,4] <- "~~~~~"
+    barco[5,5] <- "~~~~~"
+
+    // Mostrar el arreglo (barco)
+    Para i <- 1 Hasta 5 Con Paso 1 Hacer
+        Para j <- 1 Hasta 5 Con Paso 1 Hacer
+            Escribir barco[i,j], " ";  // Mostrar el contenido del arreglo
+        FinPara
+        Escribir ""  // Nueva línea para separar las filas
+    FinPara
+
+FinAlgoritmo
+
+
+
+
+
+
+
+Algoritmo MayorYSegundoMayor
+    // Declaramos las variables
+    Definir n, i, mayor, segundoMayor Como Entero
+
+    // Pedimos al usuario la cantidad de números
+    Escribir "Ingrese la cantidad de números: "
+    Leer n
+
+    // Creamos el arreglo para almacenar los números
+    Definir numeros Como Arreglo[1..n] De Entero
+
+    // Pedimos al usuario que ingrese los números
+    Para i <- 1 Hasta n Con Paso 1 Hacer
+        Escribir "Ingrese el número ", i, ": "
+        Leer numeros[i]
+    FinPara
+
+    // Inicializamos el mayor y el segundo mayor
+    mayor <- numeros[1]
+    segundoMayor <- -9999999  // Inicializamos con un valor muy bajo
+
+    // Encontramos el mayor y el segundo mayor
+    Para i <- 2 Hasta n Con Paso 1 Hacer
+        Si numeros[i] > mayor Entonces
+            segundoMayor <- mayor  // El mayor actual pasa a ser el segundo mayor
+            mayor <- numeros[i]   // Actualizamos el mayor
+        Sino
+            Si numeros[i] > segundoMayor Y numeros[i] <> mayor Entonces
+                segundoMayor <- numeros[i]  // Actualizamos el segundo mayor
+            FinSi
+        FinSi
+    FinPara
+
+    // Mostramos el mayor y el segundo mayor
+    Escribir "El número mayor es: ", mayor
+    Escribir "El segundo número mayor es: ", segundoMayor
+
+FinAlgoritmo
+
+
+
+
+
+
+
+
+Algoritmo PartesComputadora
+    // Declaramos las variables
+    Definir partes[1..100] Como Cadena
+    Definir i, j, n Como Entero
+    Definir temp Como Cadena
+
+    // Inicializamos la cantidad de partes ingresadas
+    n <- 0
+
+    // Ingresar los nombres de las partes hasta ingresar un dato vacío
+    Escribir "Ingrese los nombres de las partes de la computadora. Deje el nombre vacío para terminar."
+    
+    Mientras Verdadero Hacer
+        Escribir "Ingrese una parte: "
+        Leer partes[n+1]
+
+        Si partes[n+1] = "" Entonces
+            Romper  // Si el dato ingresado está vacío, terminamos el ciclo
+        FinSi
+
+        n <- n + 1  // Aumentamos el contador de partes
+    FinMientras
+
+    // Ordenar las partes de forma ascendente (Método de burbuja)
+    Para i <- 1 Hasta n-1 Con Paso 1 Hacer
+        Para j <- i+1 Hasta n Con Paso 1 Hacer
+            Si partes[i] > partes[j] Entonces
+                // Intercambiar las partes[i] y partes[j]
+                temp <- partes[i]
+                partes[i] <- partes[j]
+                partes[j] <- temp
+            FinSi
+        FinPara
+    FinPara
+
+    // Mostrar las partes ordenadas
+    Escribir "Las partes de la computadora en orden ascendente son:"
+    Para i <- 1 Hasta n Con Paso 1 Hacer
+        Escribir partes[i]
+    FinPara
+
+FinAlgoritmo
