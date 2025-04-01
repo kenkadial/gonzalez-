@@ -1,0 +1,133 @@
+Algoritmo SumaSecuenciaEnteros
+    // Declarar las variables
+    Definir n, i, numero, suma Como Entero
+
+    // Pedir el número de valores a ingresar
+    Escribir "Ingrese la cantidad de números a sumar: "
+    Leer n
+
+    // Inicializamos la variable suma en 0
+    suma <- 0
+
+    // Ingresar los números y sumarlos
+    Para i <- 1 Hasta n Con Paso 1 Hacer
+        Escribir "Ingrese el número ", i, ": "
+        Leer numero
+        suma <- suma + numero  // Acumulamos el valor ingresado en la variable suma
+    FinPara
+
+    // Imprimir el resultado de la suma
+    Escribir "La suma de los números ingresados es: ", suma
+
+FinAlgoritmo
+
+
+
+
+Algoritmo RaizCuadradaManual
+    // Declarar las variables
+    Definir numero, residuo, raiz, divisor, parte Como Entero
+    Definir i, j, temp Como Entero
+    Definir arreglo Como Arreglo[1..5] De Entero
+
+    // Ingresar el número de 5 dígitos
+    Escribir "Ingrese un número de 5 dígitos: "
+    Leer numero
+
+    // Separar las cifras de 2 en 2 desde la derecha
+    // Se almacenan en el arreglo de 3 posiciones para que queden 2 dígitos por posición
+    arreglo[1] <- numero / 10000    // Primer par
+    arreglo[2] <- (numero / 100) % 100    // Segundo par
+    arreglo[3] <- numero % 100     // Tercer par (últimos 2 dígitos)
+
+    // Inicializar variables
+    residuo <- 0
+    raiz <- 0
+    divisor <- 0
+
+    // Ciclo para calcular la raíz cuadrada
+    Para i <- 1 Hasta 3 Con Paso 1 Hacer
+        // Traemos el siguiente par de la cifra
+        residuo <- residuo * 100 + arreglo[i]
+        
+        // Se calcula el valor de la raíz cuadrada hasta ahora
+        parte <- 0
+        Para j <- 9 Hasta 0 Con Paso -1 Hacer
+            temp <- (divisor * 10 + j) * j
+            Si temp <= residuo Entonces
+                parte <- j
+                divisor <- divisor * 10 + j
+                residuo <- residuo - temp
+                Salir
+            FinSi
+        FinPara
+        
+        // Se añade el dígito a la raíz
+        raiz <- raiz * 10 + parte
+    FinPara
+
+    // Imprimir el resultado
+    Escribir "La raíz cuadrada es: ", raiz
+    Escribir "El residuo final es: ", residuo
+
+FinAlgoritmo
+
+
+
+
+
+
+
+Algoritmo RegistroTemperaturas
+    // Declaramos las variables
+    Definir temperaturas[1..7] Como Real  // Arreglo para las temperaturas de la semana
+    Definir i, maxTemp, minTemp, sumaTemp, promedio Como Real
+
+    // Solicitar las temperaturas de la semana
+    Escribir "Ingrese las temperaturas durante la semana (7 días):"
+    sumaTemp <- 0
+
+    Para i <- 1 Hasta 7 Con Paso 1 Hacer
+        Escribir "Ingrese la temperatura del día ", i, ": "
+        Leer temperaturas[i]
+        sumaTemp <- sumaTemp + temperaturas[i]  // Acumulamos la suma de las temperaturas
+    FinPara
+
+    // Llamamos a la función para calcular el máximo, el mínimo y el promedio
+    maxTemp, minTemp, promedio <- CalcularPromedioYExtremos(temperaturas, sumaTemp)
+
+    // Mostrar los resultados
+    Escribir "La temperatura máxima de la semana es: ", maxTemp
+    Escribir "La temperatura mínima de la semana es: ", minTemp
+    Escribir "El promedio de las temperaturas es: ", promedio
+
+FinAlgoritmo
+
+// Función para calcular el promedio, máximo y mínimo
+Funcion CalcularPromedioYExtremos(temperaturas[1..7], sumaTemp)
+    Definir maxTemp, minTemp, promedio Como Real
+    maxTemp <- temperaturas[1]
+    minTemp <- temperaturas[1]
+    
+    // Encontramos la temperatura máxima y mínima
+    Para i <- 2 Hasta 7 Con Paso 1 Hacer
+        Si temperaturas[i] > maxTemp Entonces
+            maxTemp <- temperaturas[i]
+        FinSi
+        
+        Si temperaturas[i] < minTemp Entonces
+            minTemp <- temperaturas[i]
+        FinSi
+    FinPara
+
+    // Calculamos el promedio
+    promedio <- sumaTemp / 7  // Dividimos la suma total entre 7 días
+
+    // Retornamos los resultados
+    Retornar maxTemp, minTemp, promedio
+FinFuncion
+
+
+
+
+
