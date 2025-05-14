@@ -4,3 +4,71 @@ def norma_vector(vector):
     return math.sqrt(suma_cuadrados)
 v = [3, 4]
 print("Norma del vector:", norma_vector(v))  # Resultado: 5.0
+
+
+
+
+def son_paralelos(v1, v2):
+    if len(v1) != len(v2):
+        return False  
+    try:
+        razones = [v1[i] / v2[i] if v2[i] != 0 else None for i in range(len(v1))]
+    except ZeroDivisionError:
+        return False
+    
+    razones_filtradas = [r for r in razones if r is not None]
+    
+    return all(r == razones_filtradas[0] for r in razones_filtradas)
+
+v1 = [2, 4, 6]
+v2 = [1, 2, 3]
+print("¿Son paralelos?:", son_paralelos(v1, v2)) 
+
+
+
+
+
+def producto_escalar(v1, v2):
+    if len(v1) != len(v2):
+        raise ValueError("Los vectores deben tener la misma dimensión")
+    
+    return sum(a * b for a, b in zip(v1, v2))
+
+v1 = [1, 2, 3]
+v2 = [4, 5, 6]
+print("Producto escalar:", producto_escalar(v1, v2))  
+
+
+
+
+
+def son_ortogonales(v1, v2):
+    if len(v1) != len(v2):
+        raise ValueError("Los vectores deben tener la misma dimensión")
+    
+    producto = sum(a * b for a, b in zip(v1, v2))
+    return producto == 0
+
+v1 = [1, 2]
+v2 = [-2, 1]
+print("¿Son ortogonales?:", son_ortogonales(v1, v2)) 
+
+
+
+
+
+ Representación de una carta: (valor, palo)
+valor puede ser: 'A', '2', ..., '10', 'J', 'Q', 'K'
+palo puede ser: 'Corazones', 'Diamantes', 'Tréboles', 'Picas'
+
+baraja = []
+
+valores = ['A'] + [str(n) for n in range(2, 11)] + ['J', 'Q', 'K']
+palos = ['Corazones', 'Diamantes', 'Tréboles', 'Picas']
+
+for palo in palos:
+    for valor in valores:
+        carta = (valor, palo)
+        baraja.append(carta)
+for carta in baraja[:5]:
+    print(carta)
